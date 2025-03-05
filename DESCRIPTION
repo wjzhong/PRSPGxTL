@@ -1,0 +1,33 @@
+Package: PRSPGxTL
+Title: Improving Polygenic Risk Score Based Drug Response Prediction Using Transfer Learning
+Version: 0.1.0
+Authors@R: c(
+    person(given = "Youshu", family = "Cheng", role = c("aut"),
+            email = ""),
+    person(given = "Song", family = "Zhai", role = c("aut"),
+            email = ""),
+    person(given = "Wujuan", family = "Zhong", role = c("aut"),
+            email = ""),
+    person(given = "Rachel Marceau", family = "West", role = c("aut"),
+            email = ""),
+    person(given = "Judong", family = "Shen", role = c("aut","cre"),
+            email = "judong.shen@merck.com"))
+Description: We propose a transfer learning (TL) based method (PRS-PGx-TL) that 
+    jointly models large-scale disease GWAS summary statistics 
+    from the base (training) cohort and individual-level PGx data from the target cohort, 
+    leveraging both for learning parameter optimization and prognostic and predictive PRS construction.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

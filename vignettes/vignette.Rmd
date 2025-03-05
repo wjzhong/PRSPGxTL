@@ -1,0 +1,85 @@
+---
+title: "PRSPGxTL Vignette"
+author: "Youshu Cheng, Song Zhai, Wujuan Zhong, Rachel Marceau West, Judong Shen"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette
+  #pdf_document: default
+vignette: >
+  %\VignetteIndexEntry{PRSPGxTL Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+A transfer learning (TL) based method to leverage large-scale disease GWAS summary statistics and individual-level pharmacogenomics (PGx) data to predict drug response
+
+We designed a total of 6 models (M1-M6) of PRS-PGx-TL depending on the following criteria:
+
+**Updating Parameters**: 
+   - Whether to update $\beta_G$ and $\beta_{GT}$ at the same time, or fix $\beta_G = \beta_G^{pre}$ and only update $\beta_{GT}$.
+
+**Initial Values for $\beta_{GT}$**: 
+   - Whether to set the initial values for $\beta_{GT}$ as 0 or $\beta_G^{pre}$.
+
+**Criterion for Parameter Tuning**: 
+   - Whether to maximize the overall $R^2$ or the conditional $R^2$ of $G \times T$ (conditional on $G$) as a criterion for parameter tuning.
+
+The choice of M1-M6 corresponds to the following arguments:
+
+| Model | fixG | initial values (`initial`) | criterion (`best_criterion`)
+| :--- | :--- | :--- | :--- | 
+| M1 | `FALSE` | `zero` | `best_R2`
+| M2 | `FALSE` | `PRS` | `best_R2`
+| M3 | `FALSE` | `zero` | `best_condR2`
+| M4 | `FALSE` | `PRS` | `best_condR2`
+| M5 | `TRUE` | `zero` | `best_R2`
+| M6 | `TRUE` | `PRS` | `best_R2`
+
+We will give an example of how to use the PRSPGxTL package. 
+
+## Example
+
+```{r}
+library(PRSPGxTL)
+```
+
+For example, if we want to use model M2, we can use the following code.
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+# Load the example data
+data(sum_stats)
+data(ped)
+data(G)
+data(bim)
+
+# set parameters
+fixG = FALSE
+initial = "PRS"
+best_criterion = "best_R2"
+
+# use model M2
+s1_results = inner_layer_CV(sum_stats = sum_stats, ped = ped, G = G, bim = bim, initial = initial, num_snp = 2349, covar = NULL, fixG = fixG, verbose = TRUE)
+s2_results = parameter_tuning(X = ped, s1_results = s1_results, fixG = fixG)
+s3_results = rerun_algorithm(sum_stats = sum_stats, ped = ped, G = G, bim = bim, initial = initial, num_snp = 2349, s2_results = s2_results, fixG = fixG)
+
+```
+
+Estimated $\beta_G$ and $\beta_{GT}$ can be found in `s3_results[['beta']][['beta_g']]` and `s3_results[['beta']][['beta_gt']]`.
+
+```{r}
+cat("Estimated beta_G:", "\n")
+head(s3_results[['beta']][['beta_g']])
+
+cat("Estimated beta_GT:", "\n")
+head(s3_results[['beta']][['beta_gt']])
+```
+
+
+
