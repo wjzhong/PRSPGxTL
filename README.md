@@ -1,7 +1,5 @@
 # A transfer learning (TL) based method to leverage large-scale disease GWAS summary statistics and individual-level pharmacogenomics (PGx) data to predict drug response
 
-License: GPL-3 
-
 ### References: 
   - Youshu Cheng, Song Zhai, Wujuan Zhong, Rachel Marceau West, Judong Shen. Improving Polygenic Risk Score Based Drug Response Prediction Using Transfer Learning
 
