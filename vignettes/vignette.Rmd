@@ -71,15 +71,28 @@ s3_results = rerun_algorithm(sum_stats = sum_stats, ped = ped, G = G, bim = bim,
 
 ```
 
-Estimated $\beta_G$ and $\beta_{GT}$ can be found in `s3_results[['beta']][['beta_g']]` and `s3_results[['beta']][['beta_gt']]`.
+Estimated $\beta_G$ and $\beta_{GT}$ can be found in `s3_results[['beta']][['beta_g']]` and `s3_results[['beta']][['beta_gt']]`, respectively.
 
 ```{r}
 cat("Estimated beta_G:", "\n")
-head(s3_results[['beta']][['beta_g']])
+est_beta_G = s3_results[['beta']][['beta_g']]
+head(est_beta_G)
 
 cat("Estimated beta_GT:", "\n")
-head(s3_results[['beta']][['beta_gt']])
+est_beta_GT = s3_results[['beta']][['beta_gt']]
+head(est_beta_GT)
 ```
 
+Constructed prognostic and predictive PRS in the testing dataset can be found in `s3_results[['testScoresum']][['score_g']]` and `s3_results[['testScoresum']][['score_gt']]`, respectively.
+
+```{r}
+cat("Constructed prognostic PRS in the testing dataset:", "\n")
+est_PRS_G = s3_results[['testScoresum']][['score_g']]
+head(est_PRS_G)
+
+cat("Constructed predictive PRS in the testing dataset:", "\n")
+est_PRS_GT = s3_results[['testScoresum']][['score_gt']]
+head(est_PRS_GT)
+```
 
 

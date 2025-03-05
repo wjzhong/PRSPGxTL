@@ -12,7 +12,7 @@
 
 <meta name="author" content="Youshu Cheng, Song Zhai, Wujuan Zhong, Rachel Marceau West, Judong Shen" />
 
-<meta name="date" content="2025-03-04" />
+<meta name="date" content="2025-03-05" />
 
 <title>PRSPGxTL Vignette</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">PRSPGxTL Vignette</h1>
 <h4 class="author">Youshu Cheng, Song Zhai, Wujuan Zhong, Rachel Marceau
 West, Judong Shen</h4>
-<h4 class="date">2025-03-04</h4>
+<h4 class="date">2025-03-05</h4>
 
 
 
@@ -437,28 +437,57 @@ code.</p>
 <span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>s3_results <span class="ot">=</span> <span class="fu">rerun_algorithm</span>(<span class="at">sum_stats =</span> sum_stats, <span class="at">ped =</span> ped, <span class="at">G =</span> G, <span class="at">bim =</span> bim, <span class="at">initial =</span> initial, <span class="at">num_snp =</span> <span class="dv">2349</span>, <span class="at">s2_results =</span> s2_results, <span class="at">fixG =</span> fixG)</span></code></pre></div>
 <p>Estimated <span class="math inline">\(\beta_G\)</span> and <span class="math inline">\(\beta_{GT}\)</span> can be found in
 <code>s3_results[[&#39;beta&#39;]][[&#39;beta_g&#39;]]</code> and
-<code>s3_results[[&#39;beta&#39;]][[&#39;beta_gt&#39;]]</code>.</p>
+<code>s3_results[[&#39;beta&#39;]][[&#39;beta_gt&#39;]]</code>, respectively.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimated beta_G:&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; Estimated beta_G:</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">head</span>(s3_results[[<span class="st">&#39;beta&#39;</span>]][[<span class="st">&#39;beta_g&#39;</span>]])</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt;                   SNP Ref_G        sd   mean     best_coef</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; rs2312724   rs2312724     C 0.4045966 0.1775  6.340426e-06</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; rs11084928 rs11084928     A 0.6187263 0.5125 -4.090590e-05</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; rs11883060 rs11883060     C 0.4625594 0.2425 -1.033600e-05</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; rs12982646 rs12982646     A 0.6244697 0.5550  1.282547e-05</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; rs4919908   rs4919908     T 0.7120938 0.9075  5.851886e-06</span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; rs2288951   rs2288951     A 0.6858803 0.8875 -1.272795e-05</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimated beta_GT:&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; Estimated beta_GT:</span></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="fu">head</span>(s3_results[[<span class="st">&#39;beta&#39;</span>]][[<span class="st">&#39;beta_gt&#39;</span>]])</span>
-<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt;                         SNP Ref_G        sd    mean     best_coef</span></span>
-<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; rs2312724_gt   rs2312724_gt     C 0.3256936 0.10750 -1.416613e-05</span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; rs11084928_gt rs11084928_gt     A 0.4977798 0.25500  3.692970e-06</span></span>
-<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; rs11883060_gt rs11883060_gt     C 0.3672084 0.12875 -2.911783e-05</span></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; rs12982646_gt rs12982646_gt     A 0.5165820 0.26875  2.642761e-05</span></span>
-<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; rs4919908_gt   rs4919908_gt     T 0.6890333 0.47125 -1.428730e-06</span></span>
-<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; rs2288951_gt   rs2288951_gt     A 0.6568404 0.46000  2.586365e-05</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>est_beta_G <span class="ot">=</span> s3_results[[<span class="st">&#39;beta&#39;</span>]][[<span class="st">&#39;beta_g&#39;</span>]]</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">head</span>(est_beta_G)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt;                   SNP Ref_G        sd   mean     best_coef</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; rs2312724   rs2312724     C 0.4045966 0.1775  6.340426e-06</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; rs11084928 rs11084928     A 0.6187263 0.5125 -4.090590e-05</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; rs11883060 rs11883060     C 0.4625594 0.2425 -1.033600e-05</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; rs12982646 rs12982646     A 0.6244697 0.5550  1.282547e-05</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; rs4919908   rs4919908     T 0.7120938 0.9075  5.851886e-06</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; rs2288951   rs2288951     A 0.6858803 0.8875 -1.272795e-05</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimated beta_GT:&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; Estimated beta_GT:</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>est_beta_GT <span class="ot">=</span> s3_results[[<span class="st">&#39;beta&#39;</span>]][[<span class="st">&#39;beta_gt&#39;</span>]]</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="fu">head</span>(est_beta_GT)</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt;                         SNP Ref_G        sd    mean     best_coef</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; rs2312724_gt   rs2312724_gt     C 0.3256936 0.10750 -1.416613e-05</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; rs11084928_gt rs11084928_gt     A 0.4977798 0.25500  3.692970e-06</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt; rs11883060_gt rs11883060_gt     C 0.3672084 0.12875 -2.911783e-05</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; rs12982646_gt rs12982646_gt     A 0.5165820 0.26875  2.642761e-05</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; rs4919908_gt   rs4919908_gt     T 0.6890333 0.47125 -1.428730e-06</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt; rs2288951_gt   rs2288951_gt     A 0.6568404 0.46000  2.586365e-05</span></span></code></pre></div>
+<p>Constructed prognostic and predictive PRS in the testing dataset can
+be found in <code>s3_results[[&#39;testScoresum&#39;]][[&#39;score_g&#39;]]</code> and
+<code>s3_results[[&#39;testScoresum&#39;]][[&#39;score_gt&#39;]]</code>,
+respectively.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Constructed prognostic PRS in the testing dataset:&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; Constructed prognostic PRS in the testing dataset:</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>est_PRS_G <span class="ot">=</span> s3_results[[<span class="st">&#39;testScoresum&#39;</span>]][[<span class="st">&#39;score_g&#39;</span>]]</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">head</span>(est_PRS_G)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt;              [,1]</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; id21  0.007241643</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; id23 -0.001239519</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; id25  0.013634210</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; id30  0.026290776</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; id32  0.006385709</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; id33 -0.001345904</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Constructed predictive PRS in the testing dataset:&quot;</span>, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; Constructed predictive PRS in the testing dataset:</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>est_PRS_GT <span class="ot">=</span> s3_results[[<span class="st">&#39;testScoresum&#39;</span>]][[<span class="st">&#39;score_gt&#39;</span>]]</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="fu">head</span>(est_PRS_GT)</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt;              [,1]</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; id21  0.006318931</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt; id23 -0.004072671</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; id25  0.010997391</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; id30  0.024129866</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; id32  0.010134347</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt; id33 -0.002205639</span></span></code></pre></div>
 </div>
 
 
