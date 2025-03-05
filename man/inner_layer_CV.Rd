@@ -50,6 +50,6 @@ data(ped)
 data(G)
 data(bim)
 result_list = inner_layer_CV(sum_stats = sum_stats, ped = ped, G = G, bim = bim, 
-initial = "PRS", num_snp = 2349, covar = NULL, fixG = FALSE, verbose = TRUE)
+ initial = "PRS", num_snp = 2349, covar = NULL, fixG = FALSE, verbose = TRUE)
 }
 }
